@@ -6,3 +6,4 @@ target/
 *.iws
 twitter-to-kafka-service/logs/
 docker-compose/docker-logs/
+config-server/logs/
