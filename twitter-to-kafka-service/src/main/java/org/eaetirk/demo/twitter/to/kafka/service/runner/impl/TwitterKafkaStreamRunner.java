@@ -1,7 +1,7 @@
 package org.eaetirk.demo.twitter.to.kafka.service.runner.impl;
 
 import jakarta.annotation.PreDestroy;
-import org.eaetirk.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import org.eaetirk.demo.config.TwitterToKafkaServiceConfigData;
 import org.eaetirk.demo.twitter.to.kafka.service.listener.TwitterKafkaStatusListener;
 import org.eaetirk.demo.twitter.to.kafka.service.runner.StreamRunner;
 import org.slf4j.Logger;

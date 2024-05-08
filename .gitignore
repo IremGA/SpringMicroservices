@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+target/
+.idea
+*.iws
+twitter-to-kafka-service/logs/
+docker-compose/docker-logs/

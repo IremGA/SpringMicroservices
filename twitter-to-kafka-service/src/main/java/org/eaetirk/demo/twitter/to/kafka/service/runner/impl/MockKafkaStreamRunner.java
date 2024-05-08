@@ -1,11 +1,10 @@
 package org.eaetirk.demo.twitter.to.kafka.service.runner.impl;
 
-import org.eaetirk.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import org.eaetirk.demo.config.TwitterToKafkaServiceConfigData;
 import org.eaetirk.demo.twitter.to.kafka.service.listener.TwitterKafkaStatusListener;
 import org.eaetirk.demo.twitter.to.kafka.service.runner.StreamRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import twitter4j.Status;
@@ -20,7 +19,6 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static java.lang.Thread.sleep;
 
 @Component
 @ConditionalOnProperty(name="twitter-to-kafka-service.enable-mock-tweets", havingValue = "true")
