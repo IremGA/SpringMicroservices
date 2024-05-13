@@ -10,15 +10,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>kafka</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>elastic</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>kafka-admin</module>
-        <module>kafka-model</module>
-        <module>kafka-producer</module>
-        <module>kafka-consumer</module>
+        <module>elastic-model</module>
+        <module>elastic-config</module>
+        <module>elastic-index-client</module>
     </modules>
-
 
 </project>

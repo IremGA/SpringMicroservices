@@ -33,3 +33,6 @@ docker run -it --network=host edenhill/kcat:1.7.1 kafkacat -L -b localhost:19092
 
 * **Check as a consumer the messages coming to the broker with specified topic:**
 kcat -C -b localhost:19092 -t twitter-topic
+
+* **To Run Elastic Search cluster:**
+docker-compose -f common.yml -f elastic_cluster.yml up

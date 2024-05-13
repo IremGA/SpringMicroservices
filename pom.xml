@@ -15,6 +15,11 @@
 		<module>kafka/kafka-model</module>
 		<module>kafka/kafka-admin</module>
 		<module>kafka/kafka-producer</module>
+		<module>kafka/kafka-consumer</module>
+		<module>elastic/elastic-config</module>
+		<module>elastic/elastic-model</module>
+		<module>elastic/elastic-index-client</module>
+		<module>kafka-to-elastic-service</module>
 		<module>twitter-to-kafka-service</module>
 	</modules>
 	<groupId>org.eaetirk</groupId>
@@ -37,6 +42,7 @@
 		<kafka-avro-serializer.version>7.6.0</kafka-avro-serializer.version>
 		<spring-cloud-config-server.version>4.0.5</spring-cloud-config-server.version>
 		<spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
+		<elasticsearch.version>7.17.4</elasticsearch.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -150,6 +156,11 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>kafka-consumer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-config-server</artifactId>
 				<version>${spring-cloud-config-server.version}</version>
@@ -168,6 +179,36 @@
 				<version>${spring-cloud-config-server.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.elasticsearch</groupId>
+				<artifactId>elasticsearch</artifactId>
+				<version>${elasticsearch.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.elasticsearch.client</groupId>
+				<artifactId>elasticsearch-rest-high-level-client</artifactId>
+				<version>${elasticsearch.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>elastic-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>elastic-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>elastic-index-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

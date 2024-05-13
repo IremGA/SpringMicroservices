@@ -13,11 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eaetirk</groupId>
-            <artifactId>app-config-data</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -60,6 +55,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
