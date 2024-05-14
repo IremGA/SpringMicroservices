@@ -1,6 +1,5 @@
 package org.eaetirk.demo.elastic.query.service.exception.handler;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,7 +1,6 @@
 package org.eaetirk.demo.elastic.query.service.mapper;
 
 import org.eaetirk.demo.elastic.model.index.impl.TwitterIndexModel;
-import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceRequestModel;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import org.springframework.stereotype.Component;
 

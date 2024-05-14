@@ -1,11 +1,8 @@
 package org.eaetirk.demo.elastic.model.index.util;
 
-import org.eaetirk.demo.config.ElasticConfigData;
 import org.springframework.data.elasticsearch.core.mapping.PropertyValueConverter;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;

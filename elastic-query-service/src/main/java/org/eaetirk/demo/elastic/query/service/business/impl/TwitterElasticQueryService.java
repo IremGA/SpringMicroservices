@@ -3,7 +3,6 @@ package org.eaetirk.demo.elastic.query.service.business.impl;
 import org.eaetirk.demo.elastic.model.index.impl.TwitterIndexModel;
 import org.eaetirk.demo.elastic.query.client.service.ElasticQueryClient;
 import org.eaetirk.demo.elastic.query.service.business.ElasticQueryService;
-import org.eaetirk.demo.elastic.query.service.mapper.ElasticToResponseModelMapper;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import org.eaetirk.demo.elastic.query.service.model.assembler.ElasticQueryServiceResponseModelAssembler;
 import org.slf4j.Logger;
