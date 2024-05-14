@@ -7,3 +7,7 @@ target/
 twitter-to-kafka-service/logs/
 docker-compose/docker-logs/
 config-server/logs/
+elastic-query-service/elastic-query-service/logs/
+elastic-query-service/logs/
+kafka-to-elastic-service/logs/
+
