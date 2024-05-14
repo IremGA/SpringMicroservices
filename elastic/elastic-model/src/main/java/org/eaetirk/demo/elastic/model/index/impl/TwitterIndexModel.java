@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import org.eaetirk.demo.elastic.model.index.IndexModel;
-import org.springframework.data.elasticsearch.annotations.DateFormat;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.eaetirk.demo.elastic.model.index.util.CustomZonedDateTimeConverter;
+import org.springframework.data.elasticsearch.annotations.*;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Builder
 @Data
@@ -26,9 +25,9 @@ public class TwitterIndexModel implements IndexModel {
     @JsonProperty
     private String text;
 
-    @Field(type= FieldType.Date, format = DateFormat.date, pattern = "uuuu-MM-dd'T'HH:mm:ssZZ" )
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "uuuu-MM-dd'T'HH:mm:ssZZ")
+    @Field(type = FieldType.Date, pattern = "uuuu-MM-dd'T'HH:mm:ss.SSSX||uuuu-MM-dd'T'HH:mm:ss.SSS", format = {})
+    @ValueConverter(CustomZonedDateTimeConverter.class)
     @JsonProperty
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 
 }

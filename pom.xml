@@ -21,6 +21,8 @@
 		<module>elastic/elastic-index-client</module>
 		<module>kafka-to-elastic-service</module>
 		<module>twitter-to-kafka-service</module>
+		<module>elastic/elastic-query-client</module>
+		<module>elastic-query-service</module>
 	</modules>
 	<groupId>org.eaetirk</groupId>
 	<artifactId>spring-event-driven-microservices</artifactId>
@@ -42,7 +44,7 @@
 		<kafka-avro-serializer.version>7.6.0</kafka-avro-serializer.version>
 		<spring-cloud-config-server.version>4.0.5</spring-cloud-config-server.version>
 		<spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
-		<elasticsearch.version>7.17.4</elasticsearch.version>
+		<elasticsearch.version>7.17.21</elasticsearch.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -208,6 +210,21 @@
 				<groupId>org.eaetirk</groupId>
 				<artifactId>elastic-index-client</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>elastic-query-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eaetirk</groupId>
+				<artifactId>elastic-query-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-hateoas</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

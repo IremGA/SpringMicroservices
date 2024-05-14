@@ -13,4 +13,5 @@ public class ElasticConfigData {
     private Integer connectTimeoutMs;
     private Integer socketTimeoutMs;
     private Boolean isRepository;
+    private String zoneId;
 }
