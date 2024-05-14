@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import org.eaetirk.demo.elastic.query.service.business.ElasticQueryService;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceRequestModel;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModel;
+import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModelV2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/documents")
+@RequestMapping(value = "/documents", produces = "application/vnd.api.v1+json")
 public class ElasticDocumentController {
 
     private static final Logger LOG = LoggerFactory.getLogger(ElasticDocumentController.class);
@@ -38,10 +39,30 @@ public class ElasticDocumentController {
         return ResponseEntity.ok(elasticQueryServiceResponseModel);
     }
 
+    @GetMapping(value = "/{id}", produces = "application/vnd.api.v2+json")
+    public @ResponseBody ResponseEntity<ElasticQueryServiceResponseModelV2> getDocumentByIdV2(@PathVariable @NotEmpty String id){
+        ElasticQueryServiceResponseModel elasticQueryServiceResponseModel = elasticQueryService.getDocumentById(id);
+        LOG.info("ElasticSearch returned document with ID {} ", id);
+
+        return ResponseEntity.ok(toElasticResponseModelV2(elasticQueryServiceResponseModel));
+    }
     @PostMapping("/get-document-by-text")
     public @ResponseBody ResponseEntity<List<ElasticQueryServiceResponseModel>> getDocumentsByText(@RequestBody @Valid ElasticQueryServiceRequestModel requestModel){
         List<ElasticQueryServiceResponseModel> response = elasticQueryService.getDocumentsByText(requestModel.getText());
         LOG.info("ElasticSearch returned {} documents with Text {}  ",response.size(), requestModel.getText());
         return ResponseEntity.ok(response);
+    }
+
+    private ElasticQueryServiceResponseModelV2 toElasticResponseModelV2(ElasticQueryServiceResponseModel elasticQueryServiceResponseModel){
+        ElasticQueryServiceResponseModelV2 elasticQueryServiceResponseModelV2 = ElasticQueryServiceResponseModelV2
+                .builder()
+                .test("testV2")
+                .text(elasticQueryServiceResponseModel.getText())
+                .userId(elasticQueryServiceResponseModel.getUserId())
+                .createdAt(elasticQueryServiceResponseModel.getCreatedAt())
+                .id(Long.parseLong(elasticQueryServiceResponseModel.getId()))
+                .build();
+        elasticQueryServiceResponseModelV2.add(elasticQueryServiceResponseModel.getLinks());
+        return elasticQueryServiceResponseModelV2;
     }
 }
