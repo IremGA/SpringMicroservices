@@ -13,6 +13,7 @@ import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseM
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModelV2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,8 @@ public class ElasticDocumentController {
     public ElasticDocumentController(ElasticQueryService elasticQueryService) {
         this.elasticQueryService = elasticQueryService;
     }
+    @Value("${server.port}")
+    private String port;
 
     @Operation(summary = "Gets All elastic Documents")
     @ApiResponses(
@@ -99,7 +102,7 @@ public class ElasticDocumentController {
     @PostMapping("/get-document-by-text")
     public @ResponseBody ResponseEntity<List<ElasticQueryServiceResponseModel>> getDocumentsByText(@RequestBody @Valid ElasticQueryServiceRequestModel requestModel){
         List<ElasticQueryServiceResponseModel> response = elasticQueryService.getDocumentsByText(requestModel.getText());
-        LOG.info("ElasticSearch returned {} documents with Text {}  ",response.size(), requestModel.getText());
+        LOG.info("ElasticSearch returned {} documents with Text {}, on port {}  ",response.size(), requestModel.getText(), port);
         return ResponseEntity.ok(response);
     }
 
