@@ -25,6 +25,7 @@
 		<module>elastic-query-service</module>
 		<module>elastic-query-web-client</module>
 		<module>reactive-elastic-query-service</module>
+		<module>reactive-elastic-query-web-client</module>
 	</modules>
 	<groupId>org.eaetirk</groupId>
 	<artifactId>spring-event-driven-microservices</artifactId>
