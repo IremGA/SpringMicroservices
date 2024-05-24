@@ -36,3 +36,6 @@ kcat -C -b localhost:19092 -t twitter-topic
 
 * **To Run Elastic Search cluster:**
 docker-compose -f common.yml -f elastic_cluster.yml up
+
+* **To Run Keycloack cluster:**
+docker-compose -f docker-compose/keycloak_authorization_server.yml up 
