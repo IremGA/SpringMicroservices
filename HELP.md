@@ -38,4 +38,5 @@ kcat -C -b localhost:19092 -t twitter-topic
 docker-compose -f common.yml -f elastic_cluster.yml up
 
 * **To Run Keycloack cluster:**
-docker-compose -f docker-compose/keycloak_authorization_server.yml up 
+docker-compose -f docker-compose/keycloak_authorization_server.yml -f docker-compose/common.yml up
+* Realm-export.json is attached under elastic-query-service module and keycloak-spring security related configurations are done in this module
