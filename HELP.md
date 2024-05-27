@@ -40,3 +40,4 @@ docker-compose -f common.yml -f elastic_cluster.yml up
 * **To Run Keycloack cluster:**
 docker-compose -f docker-compose/keycloak_authorization_server.yml -f docker-compose/common.yml up
 * Realm-export.json is attached under elastic-query-service module and keycloak-spring security related configurations are done in this module
+* To see the changes please make keycloak up and running, then config server, then elastic-query-service application
