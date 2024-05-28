@@ -18,7 +18,7 @@ For further reference, please consider the following sections:
 
 docker-compose % docker-compose -f common.yml -f kafka_cluster.yml up
 
-* **After ensuring brokers and schema registery up and running, you can start application:**
+* **After ensuring brokers and schema register up and running, you can start application:**
 
 
 * **kafkacat/kcat :**
@@ -41,3 +41,12 @@ docker-compose -f common.yml -f elastic_cluster.yml up
 docker-compose -f docker-compose/keycloak_authorization_server.yml -f docker-compose/common.yml up
 * Realm-export.json is attached under elastic-query-service module and keycloak-spring security related configurations are done in this module
 * To see the changes please make keycloak up and running, then config server, then elastic-query-service application
+
+* **To Encrypt secrets to be used in the yaml cluster:**
+* Open terminal
+* brew sdkman
+* sdk install springboot 2.7.15
+* spring install org.springframework.cloud:spring-cloud-cli:3.1.1
+* spring encrypt <pw_to_be_encrypted> --key '<EncryptKey>'
+* SET EncryptKey value to Env Variables as ENCRYPT_KEY.
+* then set as : user-config.password={cipher}28de99c7aeb4116e12*****

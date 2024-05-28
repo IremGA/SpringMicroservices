@@ -13,4 +13,6 @@ kafka-to-elastic-service/logs/
 reactive-elastic-query-service/logs/
 reactive-elastic-query-web-client/logs/
 docker-compose/postgres_data/
+elastic-query-web-client/logs/
+elastic-query-web-client/logs/archived/
 
