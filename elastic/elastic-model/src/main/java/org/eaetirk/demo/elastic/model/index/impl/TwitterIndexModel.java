@@ -1,6 +1,5 @@
 package org.eaetirk.demo.elastic.model.index.impl;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;

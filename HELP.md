@@ -50,3 +50,11 @@ docker-compose -f docker-compose/keycloak_authorization_server.yml -f docker-com
 * spring encrypt <pw_to_be_encrypted> --key '<EncryptKey>'
 * SET EncryptKey value to Env Variables as ENCRYPT_KEY.
 * then set as : user-config.password={cipher}28de99c7aeb4116e12*****
+
+* **To Run Kafka Stream:**
+* first go to docker compose and run :
+* docker-compose -f common.yml -f kafka_cluster.yml -f keycloak_authorization_server.yml up
+* run Config Server
+* run Twitter to Kafka Topic
+* run Kafka Stream service
+* Check the produced data :  kcat -L -b localhost:19092 

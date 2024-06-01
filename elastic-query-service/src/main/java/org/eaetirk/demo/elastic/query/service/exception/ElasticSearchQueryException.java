@@ -3,6 +3,7 @@ package org.eaetirk.demo.elastic.query.service.exception;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -44,5 +45,10 @@ public class ElasticSearchQueryException extends RuntimeException{
         this.message = message1;
         this.reason = reason;
         this.status = status;
+    }
+
+    public ElasticSearchQueryException(String message, HttpStatusCode httpStatusCode) {
+        this.reason = httpStatusCode.toString();
+        this.message =message;
     }
 }

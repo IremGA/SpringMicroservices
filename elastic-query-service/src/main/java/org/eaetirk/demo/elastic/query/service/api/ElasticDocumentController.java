@@ -8,14 +8,19 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import org.eaetirk.demo.elastic.query.service.business.ElasticQueryService;
+import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceAnalyticsResponseModel;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceRequestModel;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import org.eaetirk.demo.elastic.query.service.model.ElasticQueryServiceResponseModelV2;
+import org.eaetirk.demo.elastic.query.service.security.TwitterQueryUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -105,6 +110,28 @@ public class ElasticDocumentController {
     public @ResponseBody ResponseEntity<List<ElasticQueryServiceResponseModel>> getDocumentsByText(@RequestBody @Valid ElasticQueryServiceRequestModel requestModel){
         List<ElasticQueryServiceResponseModel> response = elasticQueryService.getDocumentsByText(requestModel.getText());
         LOG.info("ElasticSearch returned {} documents with Text {}, on port {}  ",response.size(), requestModel.getText(), port);
+        return ResponseEntity.ok(response);
+    }
+
+    @Operation(summary = "Gets elastic Documents by text")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Success", content = {
+                            @Content(mediaType = "application/vnd.api.v1+json",
+                                    schema = @Schema(implementation = ElasticQueryServiceResponseModel.class))
+                    }),
+                    @ApiResponse(responseCode = "400", description = "Not Found"),
+                    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+            }
+    )
+    @PostMapping("/get-document-by-text-analytics")
+    public @ResponseBody ResponseEntity<ElasticQueryServiceAnalyticsResponseModel> getDocumentsByTextAnalytics(
+            @RequestBody @Valid ElasticQueryServiceRequestModel requestModel,
+            @AuthenticationPrincipal TwitterQueryUser principal,
+            @RegisteredOAuth2AuthorizedClient("keycloak") OAuth2AuthorizedClient authorizedClient){
+        LOG.info("User {} querying with word {} to see analytics ", requestModel.getText(), principal.getUsername());
+        ElasticQueryServiceAnalyticsResponseModel response = elasticQueryService.getDocumentsByText(requestModel.getText(), authorizedClient.getAccessToken().getTokenValue());
+        LOG.info("ElasticSearch returned  {} number of word {}, on port {}  ",response.getWordCount(), requestModel.getText(), port);
         return ResponseEntity.ok(response);
     }
 
