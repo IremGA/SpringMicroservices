@@ -7,7 +7,6 @@ import org.eaetirk.demo.elastic.model.index.IndexModel;
 import org.eaetirk.demo.elastic.model.index.util.CustomZonedDateTimeConverter;
 import org.springframework.data.elasticsearch.annotations.*;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Builder
